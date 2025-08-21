@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperLiquid Cars - Premium Car Rental</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            border-bottom: 1px solid #000;
+            padding: 20px 0;
+            background: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+        
+        .language-selector {
+            position: relative;
+        }
+        
+        .lang-button {
+            background: none;
+            border: 1px solid #000;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-button:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 1px solid #000;
+        }
+        
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 200;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border: 1px solid #000;
+        }
+        
+        .cta-button:hover {
+            background: #fff;
+            color: #000;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            border-bottom: 1px solid #000;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .feature {
+            text-align: left;
+        }
+        
+        .feature-number {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+        
+        .feature h3 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .feature p {
+            font-size: 16px;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            border-bottom: 1px solid #000;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 200;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 36px;
+            font-weight: 200;
+            margin-bottom: 30px;
+        }
+        
+        .contact p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            text-align: left;
+        }
+        
+        .contact-item h4 {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-item p {
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0;
+        }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid #000;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            opacity: 0.6;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .features, .stats, .contact {
+                padding: 60px 0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .contact-item {
+                text-align: center;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">HyperLiquid Cars</div>
+            <ul class="nav-links">
+                <li><a href="#features" data-translate="nav-fleet">Fleet</a></li>
+                <li><a href="#stats" data-translate="nav-services">Services</a></li>
+                <li><a href="#contact" data-translate="nav-contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-button" onclick="toggleLanguage()" id="langButton">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in" data-translate="hero-title">Premium Car Rental</h1>
+            <p class="fade-in" data-translate="hero-subtitle">Experience luxury and reliability with our carefully curated fleet of premium vehicles. Available whenever you need them, wherever you need to go.</p>
+            <a href="#contact" class="cta-button fade-in" data-translate="hero-cta">Reserve Now</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title fade-in" data-translate="features-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature fade-in">
+                    <div class="feature-number">01</div>
+                    <h3 data-translate="feature1-title">Premium Fleet</h3>
+                    <p data-translate="feature1-desc">Luxury vehicles maintained to the highest standards. From executive sedans to performance sports cars.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-number">02</div>
+                    <h3 data-translate="feature2-title">Instant Availability</h3>
+                    <p data-translate="feature2-desc">Book online and pick up within hours. Our streamlined process gets you on the road fast.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-number">03</div>
+                    <h3 data-translate="feature3-title">24/7 Support</h3>
+                    <p data-translate="feature3-desc">Round-the-clock assistance wherever your journey takes you. Professional support when you need it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="stats">
+        <div class="container">
+            <h2 class="section-title fade-in" data-translate="stats-title">Trusted Globally</h2>
+            <div class="stats-grid">
+                <div class="fade-in">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label" data-translate="stat1">Happy Clients</div>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label" data-translate="stat2">Premium Vehicles</div>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label" data-translate="stat3">Global Locations</div>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label" data-translate="stat4">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="fade-in" data-translate="contact-title">Get Started Today</h2>
+                <p class="fade-in" data-translate="contact-subtitle">Ready to experience premium car rental? Contact us for immediate assistance or browse our available fleet.</p>
+                <a href="mailto:hello@hyperliquidcars.com" class="cta-button fade-in" data-translate="contact-cta">Contact Us</a>
+                
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <h4 data-translate="contact-email-label">Email</h4>
+                        <p>hello@hyperliquidcars.com</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h4 data-translate="contact-phone-label">Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-translate="footer">© 2025 HyperLiquid Cars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Translation system
+        const translations = {
+            en: {
+                'nav-fleet': 'Fleet',
+                'nav-services': 'Services', 
+                'nav-contact': 'Contact',
+                'hero-title': 'Premium Car Rental',
+                'hero-subtitle': 'Experience luxury and reliability with our carefully curated fleet of premium vehicles. Available whenever you need them, wherever you need to go.',
+                'hero-cta': 'Reserve Now',
+                'features-title': 'Why Choose Us',
+                'feature1-title': 'Premium Fleet',
+                'feature1-desc': 'Luxury vehicles maintained to the highest standards. From executive sedans to performance sports cars.',
+                'feature2-title': 'Instant Availability',
+                'feature2-desc': 'Book online and pick up within hours. Our streamlined process gets you on the road fast.',
+                'feature3-title': '24/7 Support',
+                'feature3-desc': 'Round-the-clock assistance wherever your journey takes you. Professional support when you need it.',
+                'stats-title': 'Trusted Globally',
+                'stat1': 'Happy Clients',
+                'stat2': 'Premium Vehicles',
+                'stat3': 'Global Locations',
+                'stat4': 'Customer Support',
+                'contact-title': 'Get Started Today',
+                'contact-subtitle': 'Ready to experience premium car rental? Contact us for immediate assistance or browse our available fleet.',
+                'contact-cta': 'Contact Us',
+                'contact-email-label': 'Email',
+                'contact-phone-label': 'Phone',
+                'footer': '© 2025 HyperLiquid Cars. All rights reserved.'
+            },
+            es: {
+                'nav-fleet': 'Flota',
+                'nav-services': 'Servicios',
+                'nav-contact': 'Contacto',
+                'hero-title': 'Alquiler Premium de Autos',
+                'hero-subtitle': 'Experimenta lujo y confiabilidad con nuestra flota cuidadosamente seleccionada de vehículos premium. Disponible cuando los necesites, donde necesites ir.',
+                'hero-cta': 'Reservar Ahora',
+                'features-title': 'Por Qué Elegirnos',
+                'feature1-title': 'Flota Premium',
+                'feature1-desc': 'Vehículos de lujo mantenidos con los más altos estándares. Desde sedanes ejecutivos hasta autos deportivos de alto rendimiento.',
+                'feature2-title': 'Disponibilidad Inmediata',
+                'feature2-desc': 'Reserva online y recoge en horas. Nuestro proceso optimizado te pone en carretera rápidamente.',
+                'feature3-title': 'Soporte 24/7',
+                'feature3-desc': 'Asistencia las 24 horas dondequiera que te lleve tu viaje. Soporte profesional cuando lo necesites.',
+                'stats-title': 'Confianza Global',
+                'stat1': 'Clientes Satisfechos',
+                'stat2': 'Vehículos Premium',
+                'stat3': 'Ubicaciones Globales',
+                'stat4': 'Soporte al Cliente',
+                'contact-title': 'Comienza Hoy',
+                'contact-subtitle': '¿Listo para experimentar el alquiler premium de autos? Contáctanos para asistencia inmediata o explora nuestra flota disponible.',
+                'contact-cta': 'Contáctanos',
+                'contact-email-label': 'Email',
+                'contact-phone-label': 'Teléfono',
+                'footer': '© 2025 HyperLiquid Cars. Todos los derechos reservados.'
+            },
+            fr: {
+                'nav-fleet': 'Flotte',
+                'nav-services': 'Services',
+                'nav-contact': 'Contact',
+                'hero-title': 'Location Premium de Voitures',
+                'hero-subtitle': 'Découvrez le luxe et la fiabilité avec notre flotte soigneusement sélectionnée de véhicules premium. Disponible quand vous en avez besoin, où que vous alliez.',
+                'hero-cta': 'Réserver Maintenant',
+                'features-title': 'Pourquoi Nous Choisir',
+                'feature1-title': 'Flotte Premium',
+                'feature1-desc': 'Véhicules de luxe entretenus selon les plus hauts standards. Des berlines exécutives aux voitures de sport haute performance.',
+                'feature2-title': 'Disponibilité Immédiate',
+                'feature2-desc': 'Réservez en ligne et récupérez en quelques heures. Notre processus optimisé vous met sur la route rapidement.',
+                'feature3-title': 'Support 24/7',
+                'feature3-desc': 'Assistance 24h/24 où que votre voyage vous mène. Support professionnel quand vous en avez besoin.',
+                'stats-title': 'Confiance Mondiale',
+                'stat1': 'Clients Satisfaits',
+                'stat2': 'Véhicules Premium',
+                'stat3': 'Emplacements Mondiaux',
+                'stat4': 'Support Client',
+                'contact-title': 'Commencez Aujourd\'hui',
+                'contact-subtitle': 'Prêt à vivre l\'expérience de location premium? Contactez-nous pour une assistance immédiate ou parcourez notre flotte disponible.',
+                'contact-cta': 'Nous Contacter',
+                'contact-email-label': 'Email',
+                'contact-phone-label': 'Téléphone',
+                'footer': '© 2025 HyperLiquid Cars. Tous droits réservés.'
+            }
+        };
+
+        let currentLang = 'en';
+        const languages = ['en', 'es', 'fr'];
+        const langNames = ['EN', 'ES', 'FR'];
+
+        function toggleLanguage() {
+            const currentIndex = languages.indexOf(currentLang);
+            const nextIndex = (currentIndex + 1) % languages.length;
+            currentLang = languages[nextIndex];
+            
+            document.getElementById('langButton').textContent = langNames[nextIndex];
+            translatePage();
+        }
+
+        function translatePage() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+            
+            document.documentElement.lang = currentLang;
+        }
+
+        // Auto-detect browser language
+        function detectLanguage() {
+            const browserLang = navigator.language.slice(0, 2);
+            if (languages.includes(browserLang)) {
+                currentLang = browserLang;
+                const index = languages.indexOf(currentLang);
+                document.getElementById('langButton').textContent = langNames[index];
+                translatePage();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            detectLanguage();
+        });
+    </script>
+</body>
+</html>
